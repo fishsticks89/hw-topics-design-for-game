@@ -2,11 +2,11 @@
 
 ## Overview
 
-Pong is a table tennis–themed twitch arcade sports video game, featuring simple two-dimensional graphics, manufactured by Atari and originally released on 29 November 1972. The two player game involves two rectangular "paddles" on either side of the screen, which in modern versions are controlled by the keyboard. It originally supported two players on a rectangular field, however four player pong allows up to four players to participate on a square field. 
+Pong is a table tennis–themed twitch arcade sports video game, featuring simple two-dimensional graphics, manufactured by Atari and originally released on 29 November 1972. The two player game involves two rectangular "paddles" on either side of the screen, which in modern versions are controlled by the keyboard. It originally supported two players on a rectangular field, however Four Player Pong allows up to four players to participate on a square field. 
 
 1. Project Choice
  - **Option:** Web Game Design
- - **Game Title:** "Pac-Man Classic"
+ - **Game Title:** "Four Player Pong"
 
 2. Purpose of the Game
  - **Goal:** The goal of players of Four Player Pong is to prevent the ball from exiting their side of the square field. It's a game that's simple to explain to friends and can scale to many people with a single device, leading to **network effects** and **growth**. 
@@ -25,7 +25,7 @@ Pong is a table tennis–themed twitch arcade sports video game, featuring simpl
    - Movement: Each player can control their paddle using arbitrary keyboard keys
    - Restart: There is a button in the top left that allows users to restart the game
    - Scoring: A point is added to a player's score when the ball exits the field on their side. The player with the lowest score is winning
-   - Bouncing: When the ball hits a paddle: It bounces.
+   - Bouncing: When the ball hits a paddle: It bounces. It has an initial random direction and constant velocity, and maintains this velocity throughout the game. 
 
 Mockup: 
 ![Mockup](https://i.imgur.com/xSdu1SM.png)
