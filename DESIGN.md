@@ -17,9 +17,10 @@ Pong is a table tennis–themed twitch arcade sports video game, featuring simpl
  - **Visual Style**: Contrary to the original Pong's design, Four Player Pong should have a maximalist design that maximizes stimulation for idling players.
  - **Color Scheme:** Four Player Pong does not follow the convention of a color scheme as the full color wheel is used frequently in the design. Every opportunity is taken to increase contrast and stimulation
  - **Typeography:** Comic Sans
- - **Layout:** Screen Arrangement: 
-    Game Area: The maze occipies the majority of the screen
-    Score Display and Navbar: This occupies the top of the screen and facilitates all mouse interactions
+ - **Layout:** Screen Arrangement:
+   - Game Area: The field occipies the majority of the screen
+   - Score Display and Navbar: This occupies the top of the screen and facilitates all mouse interactions
+   
  - **Navigation:** this is a single page app (SPA) and there is no Navigation
 **Functionality**
    - Movement: Each player can control their paddle using arbitrary keyboard keys
