@@ -9,13 +9,13 @@ Pong is a table tennis–themed twitch arcade sports video game, featuring simpl
  - **Game Title:** "Four Player Pong"
 
 2. Purpose of the Game
- - **Goal:** The goal of players of Four Player Pong is to prevent the ball from exiting their side of the square field. It's a game that's simple to explain to friends and can scale to many people with a single device, leading to **network effects** and **growth**. 
-- **Target Audience:** This game is easy to explain, making it suitable as a local multiplayer game (the people you are in local proximity to may not be seasoned gamers).
+ - **Goal:** The goal of players of Four Player Pong is to prevent the ball from exiting their side of the square field. It's a game that's simple to explain to friends and can scale to many people with a single device, leading to **network effects** and **growth**.
+- **Target Audience:** Four Player Pong is intended for people with three or more present friends that desire to play a group game of Pong. This game is easy to explain, making it suitable as a local multiplayer game (the people you are in local proximity to may not be seasoned gamers).
 
 3. Conceptualize the Design
 **Aesthetics**:
- - **Visual Style**: Contrary to the original Pong's design, four player pong should have a maximalist design that maximizes stimulation for idling players.
- - **Color Scheme:** Four Player Pong does not follow the convention of a color scheme as the full color wheel is used frequently in the design. However, every opportunity is taken to increase contrast and stimulation
+ - **Visual Style**: Contrary to the original Pong's design, Four Player Pong should have a maximalist design that maximizes stimulation for idling players.
+ - **Color Scheme:** Four Player Pong does not follow the convention of a color scheme as the full color wheel is used frequently in the design. Every opportunity is taken to increase contrast and stimulation
  - **Typeography:** Comic Sans
  - **Layout:** Screen Arrangement: 
     Game Area: The maze occipies the majority of the screen
