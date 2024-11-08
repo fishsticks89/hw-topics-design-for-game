@@ -19,14 +19,14 @@ Pong is a table tennis–themed twitch arcade sports video game, featuring simpl
  - **Typeography:** Comic Sans
  - **Layout:** Screen Arrangement:
    - Game Area: The field occipies the majority of the screen
-   - Score Display and Navbar: This occupies the top of the screen and facilitates all mouse interactions
+   - Score Display and Controlbar: This occupies the top of the screen and facilitates all mouse interactions.
    
- - **Navigation:** this is a single page app (SPA) and there is no Navigation
+ - **Navigation:** this is a single page app (SPA) and there is no Navigation.
 **Functionality**
-   - Movement: Each player can control their paddle using arbitrary keyboard keys
-   - Restart: There is a button in the top left that allows users to restart the game
-   - Scoring: A point is added to a player's score when the ball exits the field on their side. The player with the lowest score is winning
-   - Bouncing: When the ball hits a paddle: It bounces. It has an initial random direction and constant velocity, and maintains this velocity throughout the game. 
+   - Movement: Each player can control their paddle using arbitrary keyboard keys.
+   - Restart: There is a button in the top left that allows users to restart the game.
+   - Scoring: A point is added to a player's score when the ball exits the field on their side. The player with the lowest score is winning.
+   - Bouncing: When the ball hits a paddle: it bounces. It has an initial random direction and constant velocity, and maintains this velocity throughout the game. 
 
 Mockup: 
 ![Mockup](https://i.imgur.com/xSdu1SM.png)
