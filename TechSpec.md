@@ -21,6 +21,8 @@
 - ball - ball: instance of ball
 - paddle - paddle: instance of paddle
 - walls - 2D array of enums: represents location of walls
+- gameInit - method
+    - initializes game
 
 **for paddles**
 - position - point: indicates current position of paddle 
@@ -33,14 +35,10 @@
     - **Behavior** resets position of paddle after point is scored
 
 **for ball**
-- position - point: indicates current position of paddle 
-- direction - string: indicates if movement is direction "UP" or "DOWN"
-- move - method 
-    - **Input**: `string direction` - direction of movement
-    - **Behavior**: updates position based on 'direction'
+- position - point: indicates current position of ball 
 - resetPosition
     - **Input**: 'boolean hasScored' - if a team has scored or not just now
-    - **Behavior** resets position of paddle after point is scored
+    - **Behavior** resets position of ball after point is scored
 - collide
     - **Input**: 'boolean collided' - if ball position == paddle position or == wall position
-    - **Behavior**: ball bounces
+    - **Behavior**: ball bounces/changes direction
