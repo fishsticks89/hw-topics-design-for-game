@@ -12,7 +12,7 @@
 **Game Manager**
 - score  
   `int`  
-  Current score of the game.
+  Current score of the game. 
 - isGameOver
   `boolean`  
   Flag indicating if the game is over.
