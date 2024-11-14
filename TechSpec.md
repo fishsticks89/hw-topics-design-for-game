@@ -10,156 +10,156 @@
 ## Architecture
 
 **Game Manager**
-- score  
+- score `p 2`
   `int`  
   Current score of the game. 
-- isGameOver
+- isGameOver `p 1`
   `boolean`  
   Flag indicating if the game is over.
-- Paddles 
+- Paddles `p 0`
   `List<Paddle>`  
   Tracks all 4 paddles.
-- Paddle  
+- Paddle  `p 0`
   `Paddle`  
   Represents a paddle entity.
-- gameTime  
+- gameTime  `p 2`
   `double`  
   The elapsed time during the game.
-- gameState  
+- gameState  `p 2`
   `Enum`  
   The state of the game: `paused`, `running`, `over`.
-- scoreLimit  
+- scoreLimit  `p 2`
   `int`  
   The score limit that determines when the game ends.
-- scores  
+- scores  `p 1`
   `int[]`  
   Array holding the scores for each player.
-- numPlayers  
+- numPlayers  `p 2`
   `int`  
   Number of players in the game.
 
-- initializeGame  
+- initializeGame  `p 0`
     - **Behavior**:Sets all initial conditions for the game
-- pause  
+- pause  `p 2`
     - **Behavior**:Pauses the game.
-- unpause
+- unpause `p 2`
     - **Behavior**:Unpauses the game.
-- endGame
+- endGame `p 1`
     - **Behavior**:Ends the game.
-- updateScore
+- updateScore `p 1`
     - **Behavior**:Adds points to the score.
-- checkGameOver
+- checkGameOver `p 1`
     - **Behavior**:Checks if the game is over.
-- resetGame  
+- resetGame  `p 1`
     - **Behavior**:Resets the score, stage, and other game variables.
-- listenForInput
+- listenForInput `p 0`
     - **Behavior**:Event listener for player input (e.g., up, down movement).
-- handleInput  
+- handleInput `p 0`
     - Handles or reacts to player input.
-- draw
+- draw `p 0`
     - **Behavior**:Renders the paddle, ball, stage, and scoreboard display.
 
 
 **ball**
-- **position**  
+- **position**  `p 0`
   `Point`  
   The current position of the ball.
-- **color**  
+- **color**  `p 2`
   `String`  
   The color of the ball.
-- **respawnPoint**  
+- **respawnPoint**  `p 1`
   `Point`  
   The point where the ball respawns after being reset.
-- **xspeed**  
+- **xspeed**  `p 0`
   `int`  
   The horizontal speed of the ball.
-- **yspeed**  
+- **yspeed**  `p 0`
   `int`  
   The vertical speed of the ball.
-- **radius**  
+- **radius**  `p 1`
   `int`  
   The radius of the ball.
-- **lastHitBy**  
+- **lastHitBy**  `p 2`
   `int`  
   The player or paddle that last hit the ball.
 
-- **resetPosition**  
+- **resetPosition**  `p 0`
   Resets the position of the ball to the respawn point.
-- **checkCollisionWithPaddle**  
+- **checkCollisionWithPaddle**  `p 0`
   Checks for collision between the ball and a paddle.
-- **checkCollisionWithWall**  
+- **checkCollisionWithWall**  `p 0`
   Checks for collision between the ball and a wall.
-- **checkCollisionWithGoal**  
+- **checkCollisionWithGoal**  `p 0`
   Checks if the ball has collided with the back wall (the goal).
-- **bounce**  
+- **bounce**  `p 0`
   Changes the direction of the ball upon collision.
-- **updatePosition**  
+- **updatePosition**  `p 0`
   Updates the position of the ball based on its speed and direction.
 
 **paddle**
-- **position**  
+- **position**  `p 0`
   `Point`  
   The current position of the paddle.
-- **direction**  
+- **direction**  `p 0`
   `String`  
   The direction of paddle movement (e.g., "up", "down").
-- **width**  
+- **width**  `p 1`
   `int`  
   The width (dimension) of the paddle.
-- **height**  
+- **height**  `p 1`
   `int`  
   The height (dimension) of the paddle.
-- **yspeed**  
+- **yspeed**  `p 0`
   `int`  
   The movement speed of the paddle along the y-axis.
 
-- **move**  
+- **move**  `p 0`
   Moves the paddle based on the current direction, checking for collisions.
-- **resetPosition**  
+- **resetPosition**  `p 2`
   Resets the paddle to its spawn point.
-- **updatePosition**  
+- **updatePosition**  `p 0`
   Updates the paddle's position based on its speed and direction.
-- **atBoundary**  
+- **atBoundary**  `p 1`
   Checks if the paddle has hit a wall or boundary.
 
 **player**
-- **color**  
+- **color**  `p 2`
   `String`  
   The color representing the player.
-- **id**  
+- **id**  `p 2`
   `int`  
   Identifier for the player (0, 1, 2, 3).
-- **respawnPoint**  
+- **respawnPoint** `p 1` 
   `Point`  
   The point where the player respawns.
-- **score**  
+- **score**  `p 2`
   `int`  
   The player's current score.
-- **paddle**  
+- **paddle** `p 0`
   `Paddle`  
   The paddle associated with the player.
-- **controls**  
+- **controls**  `p 0`
   `Map<String, String>`  
   Maps input keys to paddle movement directions (e.g., `{"W": "up", "S": "down"}`).
-- **dimensions**  
+- **dimensions**  `p 2`
   `int`  
   Width and length of the player's paddle (assumed to be a square or rectangular paddle).
 
-- **updateScore**  
+- **updateScore**  `p 2`
   Updates the player's score.
 
 **stage**
-- **width**  
+- **width** `p 1` 
   `int`  
   The width (dimension) of the stage.
-- **length**  
+- **length**  `p 1`
   `int`  
   The length (dimension) of the stage.
 
-- **loadStage**  
+- **loadStage**  `p 2`
   Loads the stage map or layout.
-- **updateScoreBoard**  
+- **updateScoreBoard**  `p 2`
   Updates the scoreboard, changing the display to reflect current scores.
-- **loadScore**  
+- **loadScore**  `p 2`
   Loads the scoreboard, displaying the current scores for players.
 
