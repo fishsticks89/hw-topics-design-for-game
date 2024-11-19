@@ -78,7 +78,7 @@
             // Keep within bounds
             paddleTop = Math.max(
                 paddleWidthPercentage / 2,
-                Math.min(100 - paddleWidthPercentage / 2, paddleTop)
+                Math.min(100 - paddleWidthPercentage / 2, paddleTop),
             );
         } else {
             if (keysPressed[keyBindings.paddleTop.left]) {
@@ -94,7 +94,7 @@
             paddleBottom = ballPosition.x;
             paddleBottom = Math.max(
                 paddleWidthPercentage / 2,
-                Math.min(100 - paddleWidthPercentage / 2, paddleBottom)
+                Math.min(100 - paddleWidthPercentage / 2, paddleBottom),
             );
         } else {
             if (keysPressed[keyBindings.paddleBottom.left]) {
@@ -110,7 +110,7 @@
             paddleLeft = ballPosition.y;
             paddleLeft = Math.max(
                 paddleWidthPercentage / 2,
-                Math.min(100 - paddleWidthPercentage / 2, paddleLeft)
+                Math.min(100 - paddleWidthPercentage / 2, paddleLeft),
             );
         } else {
             if (keysPressed[keyBindings.paddleLeft.up]) {
@@ -126,7 +126,7 @@
             paddleRight = ballPosition.y;
             paddleRight = Math.max(
                 paddleWidthPercentage / 2,
-                Math.min(100 - paddleWidthPercentage / 2, paddleRight)
+                Math.min(100 - paddleWidthPercentage / 2, paddleRight),
             );
         } else {
             if (keysPressed[keyBindings.paddleRight.up]) {
@@ -253,13 +253,22 @@
     }
 
     if (browser) {
+        let timeout: number;
         onMount(() => {
+            timeout = setInterval(() => {
+                // random hsl color
+                const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                [...document.getElementsByClassName("container")].forEach(e => {
+                    e.style.backgroundColor = color;
+                });
+            }, 50);
             window.addEventListener("keydown", handleKeyDown);
             window.addEventListener("keyup", handleKeyUp);
             animationFrame = requestAnimationFrame(gameLoop);
         });
 
         onDestroy(() => {
+            clearTimeout(timeout);
             window.removeEventListener("keydown", handleKeyDown);
             window.removeEventListener("keyup", handleKeyUp);
             cancelAnimationFrame(animationFrame);
@@ -272,28 +281,32 @@
         <div
             class="score"
             on:click={() => (isTopAutonomous = !isTopAutonomous)}
-            style={"cursor: pointer;" + (isTopAutonomous ? "background-color:blue;" : "")}
+            style={"cursor: pointer;" +
+                (isTopAutonomous ? "background-color:blue;" : "")}
         >
             Top: {scoreTop}
         </div>
         <div
             class="score"
             on:click={() => (isBottomAutonomous = !isBottomAutonomous)}
-            style={"cursor: pointer;" + (isBottomAutonomous ? "background-color:blue;" : "")}
+            style={"cursor: pointer;" +
+                (isBottomAutonomous ? "background-color:blue;" : "")}
         >
             Bottom: {scoreBottom}
         </div>
         <div
             class="score"
             on:click={() => (isLeftAutonomous = !isLeftAutonomous)}
-            style={"cursor: pointer;" + (isLeftAutonomous ? "background-color:blue" : "")}
+            style={"cursor: pointer;" +
+                (isLeftAutonomous ? "background-color:blue" : "")}
         >
             Left: {scoreLeft}
         </div>
         <div
             class="score"
             on:click={() => (isRightAutonomous = !isRightAutonomous)}
-            style={"cursor: pointer;" + (isRightAutonomous ? "background-color:blue" : "")}
+            style={"cursor: pointer;" +
+                (isRightAutonomous ? "background-color:blue" : "")}
         >
             Right: {scoreRight}
         </div>
