@@ -8,7 +8,7 @@
     const paddleWidth = 100;
     const paddleThickness = 10;
     const paddleSpeed = 1; // Paddle movement speed in percentage per frame
-    const ballSpeedInitial = 0.3; // Initial ball speed
+    const ballSpeedInitial = 0.35; // Initial ball speed
 
     // Convert paddle dimensions to percentages
     const paddleWidthPercentage = (paddleWidth / squareSize) * 100;
@@ -19,6 +19,12 @@
     let paddleBottom = 50;
     let paddleLeft = 50;
     let paddleRight = 50;
+
+    // Autonomous mode flags
+    let isTopAutonomous = false;
+    let isBottomAutonomous = false;
+    let isLeftAutonomous = false;
+    let isRightAutonomous = false;
 
     // Scores
     let scoreTop = 0;
@@ -66,35 +72,69 @@
 
     function movePaddles(): void {
         // Top Paddle (moves left/right)
-        if (keysPressed[keyBindings.paddleTop.left]) {
-            paddleTop = Math.max(0, paddleTop - paddleSpeed);
-        }
-        if (keysPressed[keyBindings.paddleTop.right]) {
-            paddleTop = Math.min(100, paddleTop + paddleSpeed);
+        if (isTopAutonomous) {
+            // Move paddle to match ball's x position
+            paddleTop = ballPosition.x;
+            // Keep within bounds
+            paddleTop = Math.max(
+                paddleWidthPercentage / 2,
+                Math.min(100 - paddleWidthPercentage / 2, paddleTop)
+            );
+        } else {
+            if (keysPressed[keyBindings.paddleTop.left]) {
+                paddleTop = Math.max(0, paddleTop - paddleSpeed);
+            }
+            if (keysPressed[keyBindings.paddleTop.right]) {
+                paddleTop = Math.min(100, paddleTop + paddleSpeed);
+            }
         }
 
         // Bottom Paddle (moves left/right)
-        if (keysPressed[keyBindings.paddleBottom.left]) {
-            paddleBottom = Math.max(0, paddleBottom - paddleSpeed);
-        }
-        if (keysPressed[keyBindings.paddleBottom.right]) {
-            paddleBottom = Math.min(100, paddleBottom + paddleSpeed);
+        if (isBottomAutonomous) {
+            paddleBottom = ballPosition.x;
+            paddleBottom = Math.max(
+                paddleWidthPercentage / 2,
+                Math.min(100 - paddleWidthPercentage / 2, paddleBottom)
+            );
+        } else {
+            if (keysPressed[keyBindings.paddleBottom.left]) {
+                paddleBottom = Math.max(0, paddleBottom - paddleSpeed);
+            }
+            if (keysPressed[keyBindings.paddleBottom.right]) {
+                paddleBottom = Math.min(100, paddleBottom + paddleSpeed);
+            }
         }
 
         // Left Paddle (moves up/down)
-        if (keysPressed[keyBindings.paddleLeft.up]) {
-            paddleLeft = Math.max(0, paddleLeft - paddleSpeed);
-        }
-        if (keysPressed[keyBindings.paddleLeft.down]) {
-            paddleLeft = Math.min(100, paddleLeft + paddleSpeed);
+        if (isLeftAutonomous) {
+            paddleLeft = ballPosition.y;
+            paddleLeft = Math.max(
+                paddleWidthPercentage / 2,
+                Math.min(100 - paddleWidthPercentage / 2, paddleLeft)
+            );
+        } else {
+            if (keysPressed[keyBindings.paddleLeft.up]) {
+                paddleLeft = Math.max(0, paddleLeft - paddleSpeed);
+            }
+            if (keysPressed[keyBindings.paddleLeft.down]) {
+                paddleLeft = Math.min(100, paddleLeft + paddleSpeed);
+            }
         }
 
         // Right Paddle (moves up/down)
-        if (keysPressed[keyBindings.paddleRight.up]) {
-            paddleRight = Math.max(0, paddleRight - paddleSpeed);
-        }
-        if (keysPressed[keyBindings.paddleRight.down]) {
-            paddleRight = Math.min(100, paddleRight + paddleSpeed);
+        if (isRightAutonomous) {
+            paddleRight = ballPosition.y;
+            paddleRight = Math.max(
+                paddleWidthPercentage / 2,
+                Math.min(100 - paddleWidthPercentage / 2, paddleRight)
+            );
+        } else {
+            if (keysPressed[keyBindings.paddleRight.up]) {
+                paddleRight = Math.max(0, paddleRight - paddleSpeed);
+            }
+            if (keysPressed[keyBindings.paddleRight.down]) {
+                paddleRight = Math.min(100, paddleRight + paddleSpeed);
+            }
         }
     }
 
@@ -229,10 +269,34 @@
 
 <div class="container">
     <div class="scoreboard">
-        <div class="score">Top: {scoreTop}</div>
-        <div class="score">Bottom: {scoreBottom}</div>
-        <div class="score">Left: {scoreLeft}</div>
-        <div class="score">Right: {scoreRight}</div>
+        <div
+            class="score"
+            on:click={() => (isTopAutonomous = !isTopAutonomous)}
+            style={"cursor: pointer;" + (isTopAutonomous ? "background-color:blue;" : "")}
+        >
+            Top: {scoreTop}
+        </div>
+        <div
+            class="score"
+            on:click={() => (isBottomAutonomous = !isBottomAutonomous)}
+            style={"cursor: pointer;" + (isBottomAutonomous ? "background-color:blue;" : "")}
+        >
+            Bottom: {scoreBottom}
+        </div>
+        <div
+            class="score"
+            on:click={() => (isLeftAutonomous = !isLeftAutonomous)}
+            style={"cursor: pointer;" + (isLeftAutonomous ? "background-color:blue" : "")}
+        >
+            Left: {scoreLeft}
+        </div>
+        <div
+            class="score"
+            on:click={() => (isRightAutonomous = !isRightAutonomous)}
+            style={"cursor: pointer;" + (isRightAutonomous ? "background-color:blue" : "")}
+        >
+            Right: {scoreRight}
+        </div>
     </div>
 
     <Field
@@ -255,6 +319,9 @@
         <strong>Bottom Paddle:</strong> L (Left), P (Right)<br />
         <strong>Left Paddle:</strong> Z (Up), X (Down)<br />
         <strong>Right Paddle:</strong> M (Up), N (Down)
+    </p>
+    <p>
+        <em>Click on a score to toggle autonomous mode for that paddle.</em>
     </p>
 </div>
 
