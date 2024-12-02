@@ -1,4 +1,3 @@
-<!-- Field.svelte -->
 <script lang="ts">
   export let squareSize: number = 600; // Size of the game field in pixels
 

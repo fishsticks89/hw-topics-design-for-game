@@ -1,7 +1,14 @@
 # MVP Implementation Plan
 
+## **MESSAGE TO THE PEASANT THAT INHERITED THIS PROJECT**
+
+Please see the bottom of the file.
+
 ## Day 1-2 (Core Framework)
+
 - Focusing on setting up the core game elements and basic functionality.BackGround paddles and ball without any collision detection or scoring system or movement.
+
+*implemented*
 - ## Paddles
 
 Priority: P0
@@ -14,7 +21,7 @@ Ensure each paddle is initialized with position and movement attributes.
 Technical Components:
 
 Paddle class/object to manage paddle attributes (e.g., position, direction).
-Initialize a List<Paddle> in Game Manager to track all paddles.
+Initialize a List `<Paddle>` in Game Manager to track all paddles.
 Simplifications:
 
 Default all paddles to identical sizes and speeds.
@@ -22,6 +29,7 @@ Dependencies:
 
 Requires initializeGame function in Game Manager to set paddle positions.
 
+*implemented*
 ## initializeGame
 
 Priority: P0
@@ -42,7 +50,9 @@ Dependencies:
 
 None.
 
+*implemented*
 ## listenForInput
+
 Priority: P0
 Implementation Timeline: Day 1-2
 
@@ -59,7 +69,9 @@ Dependencies:
 
 Requires Paddles to be initialized.
 
+*implemented*
 ## handleInput
+
 Priority: P0
 Implementation Timeline: Day 1-2
 
@@ -76,7 +88,9 @@ Dependencies:
 
 Depends on listenForInput to capture player input.
 
+*implemented*
 ## draw
+
 Priority: P0
 Implementation Timeline: Day 1-2
 
@@ -93,7 +107,7 @@ Dependencies:
 
 Requires Paddles and Ball to be initialized.
 
-
+*implemented*
 ## Ball Position and Movement
 
 Priority: P0
@@ -115,9 +129,12 @@ Dependencies:
 initializeGame for setting initial ball position.
 
 ## Day 3-4 (Essential Features)
+
 - Focus on implementing core game mechanics, such as collision detection, scoring, and basic ball movement.
 
+*implemented*
 ## checkCollisionWithPaddle
+
 Priority: P0
 Implementation Timeline: Day 3-4
 
@@ -134,7 +151,9 @@ Dependencies:
 
 Depends on Ball and Paddles initialization.
 
+*implemented*
 ## checkCollisionWithGoal
+
 Priority: P0
 Implementation Timeline: Day 3-4
 
@@ -151,7 +170,9 @@ Dependencies:
 
 Depends on Ball and scoring system (updateScore).
 
+*implemented*
 ## bounce
+
 Priority: P0
 Implementation Timeline: Day 3-4
 
@@ -168,7 +189,9 @@ Dependencies:
 
 Relies on checkCollisionWithPaddle and checkCollisionWithWall.
 
+*implemented*
 ## updatePosition (Ball and Paddle)
+
 Priority: P0
 Implementation Timeline: Day 1-2 (Paddle), Day 3-4 (Ball)
 
@@ -185,8 +208,16 @@ Dependencies:
 
 Relies on handleInput for paddle position, bounce for ball movement.
 
-
-
-
 ## Day 5 (Enhancement & Testing)
-- Revision and testing of the game to ensure all core features are functioning correctly. Implement any additional features or enhancements based on time and resources available. 
+
+*implemented*
+- Revision and testing of the game to ensure all core features are functioning correctly. Implement any additional features or enhancements based on time and resources available.
+
+## **For the code peasant**
+### Unicorns
+Priority: P0
+Unicorns should be added to the game
+Core Requirements:
+Unicorns. Multiple.
+Dependencies:
+Happiness. Joy.

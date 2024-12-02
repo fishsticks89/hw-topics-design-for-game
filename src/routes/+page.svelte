@@ -2,6 +2,7 @@
     import { onMount, onDestroy } from "svelte";
     import Field from "./Field.svelte";
     import { browser } from "$app/environment";
+    import { flashscreen } from "$lib/flash";
 
     // Game settings
     const squareSize = 600;
@@ -253,31 +254,25 @@
     }
 
     if (browser) {
-        let timeout: number;
         onMount(() => {
-            timeout = setInterval(() => {
-                // random hsl color
-                const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                [...document.getElementsByClassName("container")].forEach(e => {
-                    e.style.backgroundColor = color;
-                });
-            }, 50);
             window.addEventListener("keydown", handleKeyDown);
             window.addEventListener("keyup", handleKeyUp);
             animationFrame = requestAnimationFrame(gameLoop);
         });
 
         onDestroy(() => {
-            clearTimeout(timeout);
             window.removeEventListener("keydown", handleKeyDown);
             window.removeEventListener("keyup", handleKeyUp);
             cancelAnimationFrame(animationFrame);
         });
     }
+
+    flashscreen();
 </script>
 
 <div class="container">
     <div class="scoreboard">
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
         <div
             class="score"
             on:click={() => (isTopAutonomous = !isTopAutonomous)}
