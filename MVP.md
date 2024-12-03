@@ -214,10 +214,24 @@ Relies on handleInput for paddle position, bounce for ball movement.
 - Revision and testing of the game to ensure all core features are functioning correctly. Implement any additional features or enhancements based on time and resources available.
 
 ## **For the code peasant**
+
+## Day 1 - 21 Days Until Christmas
+
 ### Unicorns
+
 Priority: P0
 Unicorns should be added to the game
 Core Requirements:
 Unicorns. Multiple.
 Dependencies:
 Happiness. Joy.
+
+## Day 2 - 19 Days Until Christmas
+
+### New Background
+
+Priority: P0
+Core Requirements:
+A new background should be added that is reflective of the image in the `Design.md` should be added.
+Dependencies:
+None
