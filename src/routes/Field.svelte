@@ -4,6 +4,8 @@
   export let paddleWidth: number = 20; // Paddle width in pixels
   export let paddleThickness: number = 10; // Thickness of each paddle in pixels
 
+  export let flyingImageUrl: string = 'https://i.imgur.com/8O0hTJr.jpeg'; // Default placeholder
+
   // Paddle positions (percentage of the field's dimensions)
   export let paddleTop: number = 50;
   export let paddleBottom: number = 50;
@@ -17,6 +19,36 @@
   const paddleThicknessPercentage = (paddleThickness / squareSize) * 100;
 
   const ballSize = 10; // Ball size in pixels
+
+  // Flying image state
+  let imagePosition = { x: 0, y: 0 };
+  let isImageVisible = false;
+
+  // Function to start flying image animation
+  function startFlyingImage() {
+    isImageVisible = true;
+    imagePosition = { x: 0, y: 0 };
+
+    // Animate image across the screen
+    setTimeout(() => {
+      imagePosition = { x: 100, y: 100 };
+    }, 50); // Small delay to ensure initial position is set
+
+    // Reset visibility after animation
+    setTimeout(() => {
+      isImageVisible = false;
+    }, 3000); // Animation duration
+  }
+
+  // Start flying image every 30 seconds
+  function initImageAnimation() {
+    startFlyingImage();
+    setInterval(startFlyingImage, 10000);
+  }
+
+  // Call initialization when component is mounted
+  import { onMount } from 'svelte';
+  onMount(initImageAnimation);
 </script>
 
 <style>
@@ -40,6 +72,13 @@
     height: 10px;
     background: white;
     border-radius: 50%;
+  }
+  .flying-image {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    transition: all 3s ease-in-out;
+    opacity: 0.8;
   }
 </style>
 
@@ -96,4 +135,17 @@
       top: calc({ballPosition.y}% - {ballSize / 2}px);
     "
   ></div>
+
+  <!-- Flying Image -->
+  {#if isImageVisible}
+    <img 
+      src={flyingImageUrl} 
+      alt="Flying image" 
+      class="flying-image"
+      style="
+        left: {imagePosition.x}%;
+        top: {imagePosition.y}%;
+      "
+    />
+  {/if}
 </div>
