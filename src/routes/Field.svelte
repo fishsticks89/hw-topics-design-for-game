@@ -4,7 +4,7 @@
   export let paddleWidth: number = 20; // Paddle width in pixels
   export let paddleThickness: number = 10; // Thickness of each paddle in pixels
 
-  export let flyingImageUrl: string = 'https://i.imgur.com/8O0hTJr.jpeg'; // Default placeholder
+  export let flyingImageUrl: string = '/unicorn.jpg'; // Default placeholder
 
   // Paddle positions (percentage of the field's dimensions)
   export let paddleTop: number = 50;
@@ -15,16 +15,16 @@
 
   const paddleWidthPercentage = (paddleWidth / squareSize) * 100;
   const paddleThicknessPercentage = (paddleThickness / squareSize) * 100;
-  const ballSize = 10;
 
   // Generate multiple unicorn positions
-  const unicorns = Array(4).fill(null).map((_, i) => ({
+  const unicorns = [1,2,3,4].map((_, i) => ({
     id: i,
     x: Math.random() * 80 + 10,
     y: Math.random() * 80 + 10,
     rotation: Math.random() * 360,
     scale: 0.5 + Math.random() * 0.5
   }));
+  console.log(unicorns);
   
   const ballSize = 10; // Ball size in pixels
 
@@ -116,6 +116,8 @@
     50% {
       transform: translateY(-10px) rotate(var(--rotation)) scale(var(--scale));
     }
+  }
+
   .flying-image {
     position: absolute;
     width: 100px;
