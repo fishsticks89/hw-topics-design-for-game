@@ -1,7 +1,12 @@
 <script lang="ts">
-  export let squareSize: number = 600;
-  export let paddleWidth: number = 20;
-  export let paddleThickness: number = 10;
+  export let squareSize: number = 600; // Size of the game field in pixels
+
+  export let paddleWidth: number = 20; // Paddle width in pixels
+  export let paddleThickness: number = 10; // Thickness of each paddle in pixels
+
+  export let flyingImageUrl: string = 'https://i.imgur.com/8O0hTJr.jpeg'; // Default placeholder
+
+  // Paddle positions (percentage of the field's dimensions)
   export let paddleTop: number = 50;
   export let paddleBottom: number = 50;
   export let paddleLeft: number = 50;
@@ -20,6 +25,51 @@
     rotation: Math.random() * 360,
     scale: 0.5 + Math.random() * 0.5
   }));
+  
+  const ballSize = 10; // Ball size in pixels
+
+  // Flying image state
+  let imagePosition = { x: 0, y: 0 };
+  let isImageVisible = false;
+  let imageDirection = 1; // 1 for top-left to bottom-right, -1 for top-right to bottom-left
+  let imageRotation = 0; // Rotation angle in degrees
+
+  // Function to start flying image animation
+  function startFlyingImage() {
+    isImageVisible = true;
+
+    // Set initial position based on direction
+    if (imageDirection === 1) {
+      imagePosition = { x: 0, y: 0 };
+    } else {
+      imagePosition = { x: 100, y: 0 };
+    }
+    // Animate image across the screen
+    setTimeout(() => {
+      if (imageDirection === 1) {
+        imagePosition = { x: 100, y: 100 };
+      } else {
+        imagePosition = { x: 0, y: 100 };
+      }
+      imageRotation += 360; // Rotate the image 360 degrees
+    }, 50); // Small delay to ensure initial position is set
+    // Reset visibility after animation
+    // Reset visibility and direction after animation
+    setTimeout(() => {
+      isImageVisible = false;
+      imageDirection *= -1; // Reverse the direction
+    }, 3000); // Animation duration of 10 seconds
+  }
+
+  // Start flying image every 30 seconds
+  function initImageAnimation() {
+    startFlyingImage();
+    setInterval(startFlyingImage, 5000);
+  }
+
+  // Call initialization when component is mounted
+  import { onMount } from 'svelte';
+  onMount(initImageAnimation);
 </script>
 
 <style>
@@ -46,7 +96,6 @@
     background: white;
     border-radius: 50%;
   }
-
   .unicorn {
     position: absolute;
     width: 100px;
@@ -67,6 +116,12 @@
     50% {
       transform: translateY(-10px) rotate(var(--rotation)) scale(var(--scale));
     }
+  .flying-image {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    transition: all 3s ease-in-out;
+    opacity: 0.8;
   }
 </style>
 
@@ -114,4 +169,18 @@
     class="ball"
     style={`left: calc(${ballPosition.x}% - ${ballSize / 2}px); top: calc(${ballPosition.y}% - ${ballSize / 2}px);`}
   ></div>
+
+  <!-- Flying Image -->
+  {#if isImageVisible}
+    <img 
+      src={flyingImageUrl} 
+      alt="Flying image" 
+      class="flying-image"
+      style="
+        left: {imagePosition.x}%;
+        top: {imagePosition.y}%;
+        transform: rotate({imageRotation}deg);
+      "
+    />
+  {/if}
 </div>
