@@ -217,6 +217,7 @@ Relies on handleInput for paddle position, bounce for ball movement.
 
 ## Day 1 - 21 Days Until Christmas
 
+*implemented*
 ### Unicorns
 
 Priority: P0

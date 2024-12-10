@@ -16,6 +16,8 @@ Run `pnpm install`
 Run `pnpm run dev`
 5. Happy coding :)
 
+Note from pranav - export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH" works when pnpm run dev permissions aren't allowed
+
 ## File Descriptions
 
 `src/routes/+page.svelte` - This has all the physics components of the game, the configuration, and the io implementation
